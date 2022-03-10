@@ -100,7 +100,7 @@ public class main {
             System.out.println("------------ MENU ------------");
             System.out.println("1 - Inscrever um participante;");
             System.out.println("2 - Mostrar todos participantes inscritos;");
-            System.out.println("3 - Cancelar um participante;");
+            System.out.println("3 - Cancelar a incricao de um participante;");
             System.out.println("0 - Sair");
             System.out.println("------------------------------");
             System.out.println("Informe a sua opcao: ");
@@ -137,8 +137,6 @@ public class main {
                 case 0:
                     System.out.println("Programa encerrado. Até logo!");
             }
-
-
         } while(menuAwnser != 0);
     }
 }
