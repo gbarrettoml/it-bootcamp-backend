@@ -1,6 +1,5 @@
 package main;
 
-import main.Participant;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -56,7 +55,7 @@ public class main {
         System.out.println("Informe o circuito escolhido: ");
         String circuit = scanner.next();
 
-        if(age < 18 && circuit == "Avancado") {
+        if(age < 18 && circuit.equals("Avancado")) {
             System.out.println("Você não pode se inscrever nesse circuito por não se enquadrar na faixa etária maior de 18 anos.");
             System.out.println("Tente novamente.");
             return null;
@@ -120,7 +119,7 @@ public class main {
                 case 2:
                     System.out.println("Lista de participantes por ordem de inscricao: ");
                     participantList.entrySet().forEach( entry -> {
-                        System.out.println(entry.getKey() + " - " + entry.getValue().getName() + " " + entry.getValue().getSurname());
+                        System.out.println(entry.getKey() + " - " + entry.getValue().getName() + " " + entry.getValue().getSurname() + ". Valor da Inscricao: " + entry.getValue().getPrice());
                     });
                     break;
                 case 3:
