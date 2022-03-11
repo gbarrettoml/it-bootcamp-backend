@@ -15,7 +15,5 @@ public class Main {
         if(pessoa.isOfAge()) System.out.println("Essa pessoa também é maior de idade.");
         else System.out.println("Essa pessoa não é maior de idade");
         System.out.println(pessoa);
-
-
     }
 }
