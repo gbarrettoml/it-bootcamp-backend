@@ -1,7 +1,9 @@
 package main;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class main {
 
@@ -37,7 +39,7 @@ public class main {
     participante se inscrever na categoria Circuito Pequeno e tiver 21 anos, o valor a ser
     pago é de R$ 1.500.*/
 
-    public static Participant participantSubscription (Scanner scanner) {
+    public static Participant participantSubscription (Scanner scanner, HashMap<Integer, Participant> list) {
         System.out.println("Informe o RG: ");
         String rg = scanner.next();
         System.out.println("Informe o nome: ");
@@ -60,6 +62,19 @@ public class main {
             System.out.println("Tente novamente.");
             return null;
         }
+
+        boolean check = false;
+        for (Map.Entry<Integer, Participant> entry : list.entrySet()) {
+            if (entry.getValue().getRg().equals(rg)) {
+                System.out.println("O participante só pode se inscrever uma única vez em um único circuito!");
+                check = true;
+            }
+        }
+
+        if(check) {
+            return null;
+        }
+
 
         String price = priceCalculation(age, circuit);
 
@@ -87,6 +102,38 @@ public class main {
 
     }
 
+    public static void listingParticipants(Scanner scanner, HashMap<Integer, Participant> list) {
+        System.out.println("Escolha a categoria de participantes cadastradas que você quer olhar: ");
+        System.out.println("1 - Circuito pequeno: 2km pela selva e riachos.");
+        System.out.println("2 - Circuito médio: 5km pela selva, riachos e lama.");
+        System.out.println("3 - Circuito avançado: 10km pela selva, riachos, lama e escalada.");
+        System.out.println("Informe a categoria escolhida: ");
+        Integer option = scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                list.entrySet().forEach( entry -> {
+                    if(entry.getValue().getCircuit().equals("Pequeno"))
+                        System.out.println(entry.getKey() + " - " + entry.getValue().getName() + " " + entry.getValue().getSurname() + ". Valor da Inscricao: " + entry.getValue().getPrice());
+                });
+                break;
+            case 2:
+                list.entrySet().forEach( entry -> {
+                    if(entry.getValue().getCircuit().equals("Médio"))
+                        System.out.println(entry.getKey() + " - " + entry.getValue().getName() + " " + entry.getValue().getSurname() + ". Valor da Inscricao: " + entry.getValue().getPrice());
+                });
+                break;
+            case 3:
+                list.entrySet().forEach( entry -> {
+                    if(entry.getValue().getCircuit().equals("Avancado"))
+                        System.out.println(entry.getKey() + " - " + entry.getValue().getName() + " " + entry.getValue().getSurname() + ". Valor da Inscricao: " + entry.getValue().getPrice());
+                });
+                break;
+            default:
+                System.out.println("Opção inexistente. Tente novamente.");
+        }
+    }
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -107,7 +154,7 @@ public class main {
 
             switch (menuAwnser) {
                 case 1:
-                    Participant participant = participantSubscription(scanner);
+                    Participant participant = participantSubscription(scanner, participantList);
                     if(participant != null) {
                         System.out.println(participant.getName() + ", sua inscricao foi aprovada! Você é o corredor de n. " + globalId + ".");
                         participantList.put(globalId, participant);
@@ -117,10 +164,7 @@ public class main {
                         break;
                     }
                 case 2:
-                    System.out.println("Lista de participantes por ordem de inscricao: ");
-                    participantList.entrySet().forEach( entry -> {
-                        System.out.println(entry.getKey() + " - " + entry.getValue().getName() + " " + entry.getValue().getSurname() + ". Valor da Inscricao: " + entry.getValue().getPrice());
-                    });
+                    listingParticipants(scanner, participantList);
                     break;
                 case 3:
                     System.out.println("Informe o número de inscricao do participante que você deseja cancelar a participacao: ");
