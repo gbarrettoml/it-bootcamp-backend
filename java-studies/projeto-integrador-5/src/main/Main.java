@@ -1,5 +1,9 @@
 package main;
 
+import main.Animals.Animal;
+import main.Animals.Cat;
+import main.Animals.Cow;
+import main.Animals.Dog;
 import main.Clients.Basic;
 import main.Clients.Client;
 import main.Clients.Collector;
@@ -30,7 +34,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Client executive = new Executive("Gustavo", BigDecimal.valueOf(25000));
+        Client executive = new Executive("Gustavo", BigDecimal.valueOf(25000));
         Client basic = new Basic("Gustavo B", BigDecimal.valueOf(2000));
         Client collector = new Collector("Gustavo T", BigDecimal.valueOf(5000));
 
@@ -40,7 +44,7 @@ public class Main {
         System.out.println(basic.getServices());
         basic.transacion(sc.next());
         System.out.println(collector.getServices());
-        collector.transacion(sc.next());*/
+        collector.transacion(sc.next());
 
 
         Document curriculum = new Curriculum("Gustavo", "Jogar");
@@ -50,6 +54,20 @@ public class Main {
         curriculum.printing();
         book.printing();
         report.printing();
+
+        Cow cow = new Cow();
+        Cat cat = new Cat();
+        Dog dog = new Dog();
+
+        cow.sound();
+        cow.comerPasto();
+
+        cat.sound();
+        cat.comerCarne();
+
+        dog.sound();
+        dog.comerCarne();
+
 
 
 
