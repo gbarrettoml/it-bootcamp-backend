@@ -4,6 +4,10 @@ import main.Clients.Basic;
 import main.Clients.Client;
 import main.Clients.Collector;
 import main.Clients.Executive;
+import main.Documents.Book;
+import main.Documents.Curriculum;
+import main.Documents.Document;
+import main.Documents.Report;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -26,7 +30,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Client executive = new Executive("Gustavo", BigDecimal.valueOf(25000));
+        /*Client executive = new Executive("Gustavo", BigDecimal.valueOf(25000));
         Client basic = new Basic("Gustavo B", BigDecimal.valueOf(2000));
         Client collector = new Collector("Gustavo T", BigDecimal.valueOf(5000));
 
@@ -36,7 +40,16 @@ public class Main {
         System.out.println(basic.getServices());
         basic.transacion(sc.next());
         System.out.println(collector.getServices());
-        collector.transacion(sc.next());
+        collector.transacion(sc.next());*/
+
+
+        Document curriculum = new Curriculum("Gustavo", "Jogar");
+        Document book = new Book(100, "Gustavo", "Java Program", "Tecnologia");
+        Document report = new Report(25, "Gustavo", "Barretto", "Grande");
+
+        curriculum.printing();
+        book.printing();
+        report.printing();
 
 
 
