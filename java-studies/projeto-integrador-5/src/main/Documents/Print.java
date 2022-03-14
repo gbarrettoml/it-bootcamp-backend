@@ -1,6 +1,8 @@
 package main.Documents;
 
-public interface Print {
+public interface Print<T> {
 
-    void printing();
+    static void printing(Document obj) {
+        System.out.println(obj.toString());
+    };
 }

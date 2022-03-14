@@ -8,10 +8,7 @@ import main.Clients.Basic;
 import main.Clients.Client;
 import main.Clients.Collector;
 import main.Clients.Executive;
-import main.Documents.Book;
-import main.Documents.Curriculum;
-import main.Documents.Document;
-import main.Documents.Report;
+import main.Documents.*;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -51,9 +48,9 @@ public class Main {
         Document book = new Book(100, "Gustavo", "Java Program", "Tecnologia");
         Document report = new Report(25, "Gustavo", "Barretto", "Grande");
 
-        curriculum.printing();
-        book.printing();
-        report.printing();
+        Print.printing(curriculum);
+        Print.printing(book);
+        Print.printing(report);
 
         Cow cow = new Cow();
         Cat cat = new Cat();
