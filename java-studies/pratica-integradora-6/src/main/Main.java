@@ -40,10 +40,7 @@ public class Main {
         System.out.println("Vehicles below 1000");
 
         List<Vehicle> listedVehiclesBelowThousand = garage.getVehicles().stream()
-                .filter(vehicle -> {
-                    int result = vehicle.getPrice().compareTo(new BigDecimal(1000));
-                    return result == -1;
-                })
+                .filter(vehicle -> vehicle.getPrice().compareTo(new BigDecimal(1000)) == -1)
                 .collect(Collectors.toList());
 
         listedVehiclesBelowThousand.forEach(System.out::println);
@@ -51,10 +48,7 @@ public class Main {
         System.out.println("Vehicles equal or above 1000");
 
         List<Vehicle> listedVehiclesAboveThousand = garage.getVehicles().stream()
-                .filter( vehicle -> {
-                    int result = vehicle.getPrice().compareTo(new BigDecimal(1000));
-                    return result >= 0;
-                })
+                .filter( vehicle -> vehicle.getPrice().compareTo(new BigDecimal(1000)) >= 0)
                 .collect(Collectors.toList());
 
         listedVehiclesAboveThousand.forEach(System.out::println);
@@ -67,11 +61,22 @@ public class Main {
 
         BigDecimal totalPrice = allPrices.stream()
                         .reduce(BigDecimal::add)
-                                .get();
+                        .get();
 
         System.out.println("Median: $" + totalPrice.divide(new BigDecimal(
                 garage.getVehicles().size()
         ), 2, RoundingMode.HALF_UP));
+
+
+
+        /*public static void vehiclesPriceAverage(Garage garage){
+            OptionalDouble average = garage.getVehicles().stream()
+                    .map(vehicle -> vehicle.getPrice())
+                    .mapToDouble(x -> x.doubleValue())
+                    .average();
+
+            System.out.println(BigDecimal.valueOf(average.getAsDouble()));
+        }*/
 
 
 
