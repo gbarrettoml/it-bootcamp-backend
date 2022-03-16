@@ -1,0 +1,102 @@
+package com.market.example.service;
+
+import com.market.example.model.Client;
+
+import java.util.*;
+
+public class ClientService {
+
+    private Map<Integer, Client> clientList = new HashMap<>();
+    private int globalId = 1;
+
+    private void registerClient(Client client) {
+        clientList.put(client.getId(), client);
+
+    }
+
+    private void removeClient(Integer id) {
+        Client clientRemoved = clientList.remove(id);
+        if(clientRemoved == null) {
+            System.out.println("Erro! Cliente inexistente ou não encontrado.");
+        } else {
+            System.out.println("Cliente apagado com sucesso!");
+        }
+    }
+
+    private void findClient(Integer id) {
+        Client clientSearched = clientList.get(id);
+        if(clientSearched == null) {
+            System.out.println("Erro! Cliente inexistente ou não encontrado.");
+        } else {
+            System.out.println(clientSearched.toString());
+        }
+    }
+
+    public static ClientService getInstance() {
+        return new ClientService();
+    }
+
+    public void execute() {
+        int awnser = 0;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("----------- MENU CLIENTE -----------");
+            System.out.println(
+                    "1 - Cadastrar cliente\n" +
+                            "2 - Listar clientes\n" +
+                            "3 - Buscar por id\n" +
+                            "4 - Apagar cliente\n" +
+                            "0 - Voltar");
+            System.out.println("-----------------------------------");
+            System.out.println("Escolha sua opção: ");
+            awnser = sc.nextInt();
+
+            switch (awnser) {
+                case 1:
+                    register();
+                    break;
+                case 2:
+                    findAll();
+                    break;
+                case 3:
+                    findById();
+                    break;
+                case 4:
+                    deleteById();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opção incorreta ou inexistente. Tente novamente");
+            }
+        } while (awnser != 0);
+    }
+
+    private void register() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Insira o nome");
+        String name = sc.next();
+        System.out.println("Insira o sobrenome");
+        String surname = sc.next();
+        registerClient(new Client(globalId, name, surname));
+        globalId++;
+    }
+
+    private void findAll() {
+        clientList.entrySet().forEach(System.out::println);
+    }
+
+    private void deleteById() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe o id do cliente que deseja remover: ");
+        Integer id = sc.nextInt();
+        removeClient(id);
+    }
+
+    private void findById() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe o id do cliente que você deseja encontrar: ");
+        Integer id = sc.nextInt();
+        findClient(id);
+    }
+}
