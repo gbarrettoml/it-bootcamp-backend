@@ -9,9 +9,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
-public class AccountService {
+public class AccountService implements CRUD<Account> {
 
     private static AccountService instance;
+    private static final ClientService clientService = ClientService.getInstance();
+    private static final ProductService productService = ProductService.getInstance();
 
     private static final Map<Integer, Account> accountList = new HashMap<>();
     private int globalId = 1;
@@ -41,7 +43,7 @@ public class AccountService {
 
             switch (awnser) {
                 case 1:
-                    register(clientService, productService);
+                    register();
                     break;
                 case 2:
                     findAll();
@@ -72,7 +74,7 @@ public class AccountService {
     }
 
 
-    private void register(ClientService clientService, ProductService productService) {
+    public Account register() {
         Scanner sc = new Scanner(System.in);
         String awnser = null;
         System.out.println("Informe o id do cliente: ");
@@ -82,26 +84,26 @@ public class AccountService {
             System.out.println("Cliente não encontrado. Deseja cadastrá-lo? y/n");
             awnser = sc.next().toLowerCase(Locale.ROOT);
             if(awnser.equals("y")) client = clientService.register();
-            else return;
+            else return null;
         }
 
         Account account = new Account(client);
         addingProducts(sc, awnser, client, account, productService);
-
+        return account;
     }
 
-    private void findAll() {
+    public void findAll() {
         accountList.entrySet().forEach(System.out::println);
     }
 
-    private void findById() {
+    public void findById() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe o id da fatura que você deseja encontrar: ");
         Integer id = sc.nextInt();
         findAccount(id);
     }
 
-    private void deleteById() {
+    public void deleteById() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe o id da fatura que deseja deletar: ");
         Integer id = sc.nextInt();

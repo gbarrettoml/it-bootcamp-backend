@@ -4,7 +4,7 @@ import com.market.example.model.Client;
 
 import java.util.*;
 
-public class ClientService {
+public class ClientService implements CRUD<Client> {
 
     private static ClientService instance;
     private static final Map<Integer, Client> clientList = new HashMap<>();
@@ -93,18 +93,18 @@ public class ClientService {
 
     }
 
-    private void findAll() {
+    public void findAll() {
         clientList.entrySet().forEach(System.out::println);
     }
 
-    private void deleteById() {
+    public void deleteById() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe o id do cliente que deseja remover: ");
         Integer id = sc.nextInt();
         removeClient(id);
     }
 
-    private void findById() {
+    public void findById() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe o id do cliente que você deseja encontrar: ");
         Integer id = sc.nextInt();

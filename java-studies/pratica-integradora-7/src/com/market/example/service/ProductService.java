@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class ProductService {
+public class ProductService implements CRUD<Product> {
 
     private static ProductService instance;
 
