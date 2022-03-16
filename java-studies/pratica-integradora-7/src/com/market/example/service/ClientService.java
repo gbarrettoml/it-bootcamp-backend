@@ -6,8 +6,13 @@ import java.util.*;
 
 public class ClientService {
 
-    private Map<Integer, Client> clientList = new HashMap<>();
+    private static ClientService instance;
+    private static final Map<Integer, Client> clientList = new HashMap<>();
     private int globalId = 1;
+
+    public Map<Integer, Client> getClientList() {
+        return clientList;
+    }
 
     private void registerClient(Client client) {
         clientList.put(client.getId(), client);
@@ -33,7 +38,10 @@ public class ClientService {
     }
 
     public static ClientService getInstance() {
-        return new ClientService();
+        if(instance == null) {
+            return new ClientService();
+        }
+        return instance;
     }
 
     public void execute() {
@@ -72,14 +80,17 @@ public class ClientService {
         } while (awnser != 0);
     }
 
-    private void register() {
+    public Client register() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Insira o nome");
         String name = sc.next();
         System.out.println("Insira o sobrenome");
         String surname = sc.next();
-        registerClient(new Client(globalId, name, surname));
+        Client client = new Client(globalId, name, surname);
+        registerClient(client);
         globalId++;
+        return client;
+
     }
 
     private void findAll() {

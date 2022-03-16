@@ -1,10 +1,12 @@
 package com.market.example.service;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.Scanner;
 
 public class Menu {
+
+    private ClientService clientService = ClientService.getInstance();
+    private AccountService accountService = AccountService.getInstance();
+    private ProductService productService = ProductService.getInstance();
 
     public static Menu getInstance() {
         return new Menu();
@@ -26,12 +28,13 @@ public class Menu {
 
             switch (awnser) {
                 case 1:
-                    ClientService service = ClientService.getInstance();
-                    service.execute();
+                    clientService.execute();
                     break;
                 case 2:
+                    productService.execute();
                     break;
                 case 3:
+                    accountService.execute(clientService, productService);
                     break;
                 case 0:
                     System.out.println("Programa encerrado!");
