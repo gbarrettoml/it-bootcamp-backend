@@ -26,14 +26,14 @@ public class MyService {
 
     public String execute(String str) {
         List<String> alphabetList = Arrays.stream(alphabet.split("")).collect(Collectors.toList());
-        List<String> strList = Arrays.stream(str.split("")).collect(Collectors.toList());
+        List<String> strList = Arrays.stream(str.split(" ")).collect(Collectors.toList());
         List<String> listTraslated = new ArrayList<>();
 
         for(int i = 0; i < strList.size(); i++) {
-            for(int j = 0; j < alphabetList.size(); j++) {
-                if( alphabetList.get(j).equals(strList.get(i)) ) {
-                    System.out.println(alphabetList.get(j));
-                    listTraslated.add(alphaMorseCode[j] + " ");
+            for(int j = 0; j < alphaMorseCode.length; j++) {
+                if( alphaMorseCode[j].equals(strList.get(i)) ) {
+                    System.out.println("Cai aqui!");
+                    listTraslated.add(alphabetList.get(j));
                 }
             }
         }
