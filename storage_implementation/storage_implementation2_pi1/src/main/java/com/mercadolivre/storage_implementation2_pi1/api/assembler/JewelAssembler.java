@@ -3,7 +3,6 @@ package com.mercadolivre.storage_implementation2_pi1.api.assembler;
 import com.mercadolivre.storage_implementation2_pi1.api.model.JewelRequest;
 import com.mercadolivre.storage_implementation2_pi1.api.model.JewelResponse;
 import com.mercadolivre.storage_implementation2_pi1.domain.model.Jewel;
-import com.mercadolivre.storage_implementation2_pi1.infrastructure.modelmapper.ModelMapperConfiguration;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
