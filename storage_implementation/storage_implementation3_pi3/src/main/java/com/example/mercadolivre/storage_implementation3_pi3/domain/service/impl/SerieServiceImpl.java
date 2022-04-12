@@ -3,7 +3,7 @@ package com.example.mercadolivre.storage_implementation3_pi3.domain.service.impl
 import com.example.mercadolivre.storage_implementation3_pi3.domain.exception.SerieNotFoundException;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.model.Serie;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.repository.ISerieRepository;
-import com.example.mercadolivre.storage_implementation3_pi3.domain.service.IService;
+import com.example.mercadolivre.storage_implementation3_pi3.domain.service.ISerieService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class SerieServiceImpl implements IService<Serie> {
+public class SerieServiceImpl implements ISerieService {
 
     private final ISerieRepository repository;
 

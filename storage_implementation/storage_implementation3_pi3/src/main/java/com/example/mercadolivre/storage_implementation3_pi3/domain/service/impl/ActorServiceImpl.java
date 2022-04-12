@@ -7,7 +7,7 @@ import com.example.mercadolivre.storage_implementation3_pi3.domain.model.Movie;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.repository.IActorRepository;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.repository.IEpisodeRepository;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.repository.IMovieRepository;
-import com.example.mercadolivre.storage_implementation3_pi3.domain.service.IService;
+import com.example.mercadolivre.storage_implementation3_pi3.domain.service.IActorService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class ActorServiceImpl implements IService<Actor> {
+public class ActorServiceImpl implements IActorService {
 
     private final IActorRepository repository;
     private final IMovieRepository movieRepository;
@@ -26,12 +26,12 @@ public class ActorServiceImpl implements IService<Actor> {
     public Actor save(Actor actor) {
 
         // Checking if actor already exists in database
-        Actor first_name = repository.findByFirst_name(actor.getFirst_name());
-        Actor last_name = repository.findyByLast_name(actor.getLast_name());
+        Actor first_name = repository.findByFirstName(actor.getFirstName());
+        Actor last_name = repository.findByLastName(actor.getLastName());
 
         if (
-                first_name.getFirst_name().equalsIgnoreCase(actor.getFirst_name())
-                && last_name.getLast_name().equalsIgnoreCase(actor.getLast_name())
+                first_name.getFirstName().equalsIgnoreCase(actor.getFirstName())
+                && last_name.getLastName().equalsIgnoreCase(actor.getLastName())
         ) {
             actor.setId(first_name.getId());
         }

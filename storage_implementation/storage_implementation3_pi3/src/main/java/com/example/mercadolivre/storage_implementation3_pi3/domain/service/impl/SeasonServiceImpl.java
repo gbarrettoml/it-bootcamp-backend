@@ -3,7 +3,7 @@ package com.example.mercadolivre.storage_implementation3_pi3.domain.service.impl
 import com.example.mercadolivre.storage_implementation3_pi3.domain.exception.SeasonNotFoundException;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.model.Season;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.repository.ISeasonRepository;
-import com.example.mercadolivre.storage_implementation3_pi3.domain.service.IService;
+import com.example.mercadolivre.storage_implementation3_pi3.domain.service.ISeasonService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class SeasonServiceImpl implements IService<Season> {
+public class SeasonServiceImpl implements ISeasonService {
 
     private final ISeasonRepository repository;
 

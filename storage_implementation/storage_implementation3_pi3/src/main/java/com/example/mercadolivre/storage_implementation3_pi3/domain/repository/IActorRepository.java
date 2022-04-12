@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IActorRepository extends JpaRepository<Actor, Integer> {
 
-    Actor findByFirst_name(String first_name);
-    Actor findyByLast_name(String last_name);
+    Actor findByFirstName(String firstName);
+    Actor findByLastName(String lastName);
 }

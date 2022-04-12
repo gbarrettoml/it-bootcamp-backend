@@ -21,8 +21,11 @@ public class Actor {
     private Integer id;
     private Timestamp created_at;
     private Timestamp updated_at;
-    private String first_name;
-    private String last_name;
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
     private Double rating;
 
     @ManyToMany
@@ -36,7 +39,8 @@ public class Actor {
     @ManyToMany
     @JoinTable(
             name = "actor_episode",
-            joinColumns = @JoinColumn(name = "actor_id")
+            joinColumns = @JoinColumn(name = "actor_id"),
+            inverseJoinColumns = @JoinColumn(name = "episode_id")
     )
     private Set<Episode> episodes = new HashSet<>();
 

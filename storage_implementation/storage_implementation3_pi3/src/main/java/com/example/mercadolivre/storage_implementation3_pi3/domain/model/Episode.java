@@ -28,7 +28,7 @@ public class Episode {
     private Double rating;
 
     @ManyToMany(
-            mappedBy = "actor",
+            mappedBy = "episodes",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )

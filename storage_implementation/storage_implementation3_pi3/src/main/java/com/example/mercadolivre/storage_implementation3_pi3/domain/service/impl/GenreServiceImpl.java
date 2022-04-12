@@ -3,7 +3,7 @@ package com.example.mercadolivre.storage_implementation3_pi3.domain.service.impl
 import com.example.mercadolivre.storage_implementation3_pi3.domain.exception.GenreNotFoundException;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.model.Genre;
 import com.example.mercadolivre.storage_implementation3_pi3.domain.repository.IGenreRepository;
-import com.example.mercadolivre.storage_implementation3_pi3.domain.service.IService;
+import com.example.mercadolivre.storage_implementation3_pi3.domain.service.IGenreService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class GenreServiceImpl implements IService<Genre> {
+public class GenreServiceImpl implements IGenreService {
 
     private final IGenreRepository repository;
 

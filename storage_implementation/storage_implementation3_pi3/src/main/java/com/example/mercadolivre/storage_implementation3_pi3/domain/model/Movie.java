@@ -25,7 +25,7 @@ public class Movie {
     private String title;
     private Double rating;
     private Integer awards;
-    private OffsetDateTime release_data;
+    private OffsetDateTime release_date;
     private Integer length;
 
     @ManyToOne(
